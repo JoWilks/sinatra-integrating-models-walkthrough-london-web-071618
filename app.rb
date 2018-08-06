@@ -8,7 +8,10 @@ class App < Sinatra::Base
 
   post '/' do
     text_from_user = params[:user_text]
-
+    @analyzed_text = TextAnalyzer.new(text_from_user)
+    @number_words = @analyzed_text.number_words
+    @vowels = @analyzed_text.vowels
+    @consonants = @analyzed_text.consonants
     erb :results
   end
 end
